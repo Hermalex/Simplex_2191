@@ -1,3 +1,0 @@
-Z:/IGMProfile/Desktop/DSA II/GIT/include/glm/out/build/x64-Debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_3b988.dir
-Z:/IGMProfile/Desktop/DSA II/GIT/include/glm/out/build/x64-Debug/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
-Z:/IGMProfile/Desktop/DSA II/GIT/include/glm/out/build/x64-Debug/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
