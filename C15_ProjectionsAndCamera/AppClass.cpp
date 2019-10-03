@@ -62,7 +62,12 @@ void Application::Display(void)
 
 	m4View = glm::lookAt(v3Position, v3Target, v3Upwards);
 	//m4Projection = IDENTITY_M4;
+	//m4Projection = glm::ortho(-5.0f, 5.0f, 5.0f, 5.0f, 0.001f, 100.0f);//Left edge of window, right edge of windo, top of window, bottom of window, start render distance, end render distance
 
+	int width = m_pSystem->GetWindowWidth();
+	int height = m_pSystem->GetWindowHeight();
+
+	m4Projection = glm::perspective(45.0f, (float)(width) / (float)(height), 0.001f, 100.0f);//FOV angel, window ratio, start render distance, end render distance
 
 	m_pMesh2->Render(m4Projection, m4View, m4Model);
 

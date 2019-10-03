@@ -401,19 +401,31 @@ void Application::ProcessKeyboard(void)
 	{
 		m_pCameraMngr->MoveForward(fSpeed);
 		v3Position.z -= 0.01f;
+		v3Target.z -= 0.01f;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		m_pCameraMngr->MoveForward(-fSpeed);
 		v3Position.z += 0.01f;
+		v3Target.z += 0.01f;
 	}
 	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
 		m_pCameraMngr->MoveSideways(-fSpeed);
+		v3Position.x -= 0.01f;
+		v3Target.z -= 0.01f;
+
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
 		m_pCameraMngr->MoveSideways(fSpeed);
+		v3Position.x += 0.01f;
+		v3Target.z += 0.01f;
+
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		m_pCameraMngr->MoveVertical(-fSpeed);
