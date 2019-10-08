@@ -4,15 +4,15 @@ void Application::InitVariables(void)
 {
 	//Set the position and target of the camera
 	m_pCameraMngr->SetPositionTargetAndUpward(	vector3(0.0f, 3.0f, 13.0f), //Position
-											vector3(0.0f, 3.0f, 12.0f),	//Target
-											AXIS_Y );					//Up
+											vector3(0.0f, 3.0f, 12.0f),	    //Target
+											AXIS_Y );					    //Up
 
 	//Set the position of the light
 	m_pLightMngr->SetPosition(vector3(10.0f));
 
 	//Initialize models
 
-	//creeper
+	//creeper (awwww yeah)
 	m_pCreeper = new Model();
 	m_pCreeper->Load("Sorted\\SphereCube.fbx");
 	//m_pCreeper->Load("Minecraft\\Creeper.obj");

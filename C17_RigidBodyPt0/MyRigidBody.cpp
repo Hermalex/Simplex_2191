@@ -63,6 +63,14 @@ void MyRigidBody::Release(void)
 MyRigidBody::MyRigidBody(std::vector<vector3> a_pointList)
 {
 	Init();
+	vector3 v3Average;
+	m_fRadius = 5.0f;
+	for (uint i = 0; i < a_pointList.size(); i++)
+	{
+		v3Average += a_pointList[i];
+	}
+	v3Average = v3Average / static_cast <float> (a_pointList.size());
+	m_v3Center = v3Average;
 }
 MyRigidBody::MyRigidBody(MyRigidBody const& other)
 {
@@ -102,6 +110,8 @@ void MyRigidBody::AddToRenderList(void)
 {
 	if (!m_bVisible)
 		return;
+	matrix4 m4Transform = glm::translate(m_v3Center) * glm::scale(vector3(m_fRadius));
+	m_pMeshMngr->AddWireSphereToRenderList(m4Transform, m_v3Color);
 }
 bool MyRigidBody::IsColliding(MyRigidBody* const other)
 {
