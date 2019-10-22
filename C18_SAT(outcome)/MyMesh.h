@@ -11,6 +11,7 @@ Date: 2017/05
 namespace Simplex
 {
 
+
 class MyMesh
 {
 	bool m_bBinded = false;		//Binded flag
@@ -25,6 +26,7 @@ class MyMesh
 	ShaderManager* m_pShaderMngr = nullptr;	//Shader Manager
 
 public:
+	std::vector<vector3> GetVertexList(void);
 	/*
 	USAGE: Initialize the object's fields
 	ARGUMENTS: ---

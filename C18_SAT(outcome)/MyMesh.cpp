@@ -1,6 +1,11 @@
 #include "MyMesh.h"
 using namespace Simplex;
 
+std::vector<vector3> MyMesh::GetVertexList(void)
+{
+	return m_lVertex;
+}
+
 void MyMesh::Init(void)
 {
 	m_bBinded = false;

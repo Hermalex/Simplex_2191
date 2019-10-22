@@ -11,11 +11,16 @@ Date: 2017/05
 #include "imgui\ImGuiObject.h"
 
 #include "MyRigidBody.h"
+#include "MyEntity.h"
+
 namespace Simplex
 {
 
 class Application
 {
+	MyEntity* m_pEntity1 = nullptr;
+	MyMeshManager* m_pMyMeshMngr = nullptr;
+
 	vector3 m_v3Creeper; //position of the creeper
 	quaternion m_qCreeper; //quaternion for the creeper
 

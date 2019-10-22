@@ -10,7 +10,12 @@ void Application::InitVariables(void)
 	//Set the position of the light
 	m_pLightMngr->SetPosition(vector3(10.0f));
 
+	m_pMyMeshMngr = MyMeshManager::GetInstance();
+
 	//Initialize models
+	m_pEntity1 = new MyEntity();
+	m_pEntity1->GenerateTorus();
+	
 
 	//creeper
 	m_pCreeper = new Model();
@@ -48,55 +53,16 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	//Set model matrix to the creeper
-	matrix4 mCreeper = glm::translate(m_v3Creeper) * ToMatrix4(m_qCreeper) * ToMatrix4(m_qArcBall);
-	m_pCreeper->SetModelMatrix(mCreeper);
-	m_pCreeperRB->SetModelMatrix(mCreeper);
-	
-	//Set model matrix to Steve
-	matrix4 mSteve = glm::translate(vector3(2.25f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(-55.0f), AXIS_Z);
-	m_pSteve->SetModelMatrix(mSteve);
-	m_pSteveRB->SetModelMatrix(mSteve);
-
-	//Set model matrix to Steve
-	matrix4 mCow = glm::translate(vector3(1.55f, 1.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(-55.0f), AXIS_Z);
-	m_pCow->SetModelMatrix(mCow);
-	m_pCowRB->SetModelMatrix(mCow);
-
-	//Set model matrix to Pig
-	matrix4 mPig = glm::translate(vector3(0.0f, 0.5f, -1.5f)) * glm::rotate(IDENTITY_M4, glm::radians(-55.0f), AXIS_Z);
-	m_pPig->SetModelMatrix(mPig);
-	m_pPigRB->SetModelMatrix(mPig);
-
-	//Set model matrix to Zombie
-	matrix4 mZombie = glm::translate(vector3(1.55f, 0.0f, -3.0f)) * glm::rotate(IDENTITY_M4, glm::radians(-55.0f), AXIS_Z);
-	m_pZombie->SetModelMatrix(mZombie);
-	m_pZombieRB->SetModelMatrix(mZombie);
-	
-	bool bColliding = m_pCreeperRB->IsColliding(m_pSteveRB);
-	m_pCreeperRB->IsColliding(m_pCowRB);
-	m_pCreeperRB->IsColliding(m_pZombieRB);
-	m_pCreeperRB->IsColliding(m_pPigRB);
-	
-	m_pCreeper->AddToRenderList();
-	m_pCreeperRB->AddToRenderList();
-
-	m_pSteve->AddToRenderList();
-	m_pSteveRB->AddToRenderList();
-
-	m_pCow->AddToRenderList();
-	m_pCowRB->AddToRenderList();
-
-	m_pZombie->AddToRenderList();
-	m_pZombieRB->AddToRenderList();
-
-	m_pPig->AddToRenderList();
-	m_pPigRB->AddToRenderList();
+	m_pEntity1->SetModelMatrix(ToMatrix4(m_qArcBall));
+	m_pEntity1->AddToRenderList();
 }
 void Application::Display(void)
 {
 	//Clear the screen
 	ClearScreen();
+
+	m_pMyMeshMngr->Render();
+	m_pMyMeshMngr->ClearRenderList();
 
 	//Add grid to the scene
 	m_pMeshMngr->AddGridToRenderList();
